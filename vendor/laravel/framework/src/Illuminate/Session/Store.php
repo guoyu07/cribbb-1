@@ -38,7 +38,7 @@ class Store implements SessionInterface {
 	/**
 	 * The meta-data bag instance.
 	 *
-	 * @var \Symfony\Component\Session\Storage\MetadataBag
+	 * @var \Symfony\Component\HttpFoundation\Session\Storage\MetadataBag
 	 */
 	protected $metaBag;
 
@@ -68,7 +68,7 @@ class Store implements SessionInterface {
 	 *
 	 * @param  string  $name
 	 * @param  \SessionHandlerInterface  $handler
-	 * @param  string|null $id
+	 * @param  string|null  $id
 	 * @return void
 	 */
 	public function __construct($name, SessionHandlerInterface $handler, $id = null)
@@ -156,7 +156,7 @@ class Store implements SessionInterface {
 	 */
 	protected function generateSessionId()
 	{
-		return sha1(uniqid(true).str_random(25).microtime(true));
+		return sha1(uniqid('', true).str_random(25).microtime(true));
 	}
 
 	/**
@@ -330,7 +330,7 @@ class Store implements SessionInterface {
 	 * @param  mixed|null  	 $value
 	 * @return void
 	 */
-	public function put($key, $value)
+	public function put($key, $value = null)
 	{
 		if ( ! is_array($key)) $key = array($key => $value);
 

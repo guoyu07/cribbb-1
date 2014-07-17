@@ -236,7 +236,8 @@ class Migrator {
 	/**
 	 * Require in all the migration files in a given path.
 	 *
-	 * @param  array  $files
+	 * @param  string  $path
+	 * @param  array   $files
 	 * @return void
 	 */
 	public function requireFiles($path, array $files)
@@ -248,6 +249,7 @@ class Migrator {
 	 * Pretend to run the migrations.
 	 *
 	 * @param  object  $migration
+	 * @param  string  $method
 	 * @return void
 	 */
 	protected function pretendToRun($migration, $method)
@@ -321,6 +323,7 @@ class Migrator {
 	/**
 	 * Resolve the database connection instance.
 	 *
+	 * @param  string  $connection
 	 * @return \Illuminate\Database\Connection
 	 */
 	public function resolveConnection($connection)
